@@ -1,23 +1,17 @@
-language: java
-sudo: true
+addons:
+  postgresql: "13.3"
+before_install:
+  - "chmod +x mvnw"
+before_script:
+  - "psql -c \"create database aries;\" -U postgres // your database name"
+  - "sudo -u postgres psql -c \"ALTER ROLE postgres WITH password 'postgres'\""
 dist: trusty
-
+install:
+  - "mvn -N io.takari:maven:wrapper"
+  - "./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V"
 jdk:
   - oraclejdk11
-
-addons:
-  postgresql: "13.3" // change "9.5" for your postgres specific version
-
-before_script:
-  - psql -c "create database aries;" -U postgres // your database name
-  - sudo -u postgres psql -c "ALTER ROLE postgres WITH password 'postgres'" // if your password is different from 'postgres` use that one here
-
-
+language: java
 services:
   - postgresql
-
-before_install:
-  - chmod +x mvnw
-install:
-  - mvn -N io.takari:maven:wrapper
-  - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+sudo: true
