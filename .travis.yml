@@ -10,8 +10,6 @@ install:
 jdk:
   - oraclejdk11
 language: java
-script:
-  - "./gradlew check --stacktrace"
 services:
   - postgresql
 sudo: enabled
