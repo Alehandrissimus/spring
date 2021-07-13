@@ -1,7 +1,12 @@
+---
 addons:
   postgresql: "13.3"
 before_install:
   - "chmod +x mvnw"
+before_script:
+  - "cd server"
+  - "psql -c \"create database gmstest;\" -U postgres"
+  - "sudo -u postgres psql -c \"ALTER ROLE postgres WITH password 'postgres'\""
 dist: trusty
 install:
   - "mvn -N io.takari:maven:wrapper"
@@ -9,6 +14,8 @@ install:
 jdk:
   - oraclejdk11
 language: java
+script:
+  - "./gradlew check --stacktrace"
 services:
   - postgresql
 sudo: true
