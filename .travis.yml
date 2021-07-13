@@ -1,8 +1,20 @@
 language: java
 sudo: true
 dist: trusty
+
 jdk:
   - oraclejdk11
+
+addons:
+  postgresql: "13.3" // change "9.5" for your postgres specific version
+
+before_script:
+  - psql -c "create database aries;" -U postgres // your database name
+  - sudo -u postgres psql -c "ALTER ROLE postgres WITH password 'postgres'" // if your password is different from 'postgres` use that one here
+
+services:
+  - postgresql
+
 before_install:
   - chmod +x mvnw
 install:
