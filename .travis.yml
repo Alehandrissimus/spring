@@ -1,19 +1,8 @@
 ---
 addons:
   postgresql: "13.3"
-  apt:
-    packages:
-      - postgresql-11
-      - postgresql-client-11
-env:
-  global:
-    - PGPORT=5433
-    - PGUSER=travis
 before_install:
   - "chmod +x mvnw"
-before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-  - "sudo -u postgres psql -c \"ALTER ROLE postgres WITH password 'Frad123321'\""
 dist: trusty
 install:
   - "mvn -N io.takari:maven:wrapper"
