@@ -1,6 +1,7 @@
 package com.hello.spring;
 
 import com.hello.spring.data.models.Student;
+import com.hello.spring.data.models.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -18,7 +19,12 @@ public class RestController {
     }
 
     @GetMapping("/students")
-    public List<Student> students() {
-        return controller.getAllStudents();
+    public String  students() {
+        return controller.getAllStudents().toString();
+    }
+
+    @GetMapping("/test")
+    public String test() {
+        return controller.test().toString();
     }
 }

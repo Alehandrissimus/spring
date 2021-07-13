@@ -1,6 +1,7 @@
 package com.hello.spring;
 
 import com.hello.spring.data.models.Student;
+import com.hello.spring.data.models.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -17,6 +18,10 @@ public class Controller {
 
     public List<Student> getAllStudents() {
         return service.getAllStudents();
+    }
+
+    public Test test() {
+        return service.test();
     }
 
     public String foo() {
