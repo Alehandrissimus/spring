@@ -4,7 +4,7 @@ addons:
 before_install:
   - "chmod +x mvnw"
 before_script:
-  - "psql -c \"create database aries;\" -U postgres"
+  - "psql -c \"create database spring;\" -U postgres"
   - "sudo -u postgres psql -c \"ALTER ROLE postgres WITH password 'postgres'\""
 dist: trusty
 install:
