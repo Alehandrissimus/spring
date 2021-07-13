@@ -11,4 +11,3 @@ jdk:
   - oraclejdk11
 language: java
 sudo: enabled
-
