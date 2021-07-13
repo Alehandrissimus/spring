@@ -3,8 +3,7 @@ addons:
 before_install:
   - "chmod +x mvnw"
 before_script:
-  - "psql -c \"create database aries;\" -U postgres // your database name"
-  - "sudo -u postgres psql -c \"ALTER ROLE postgres WITH password 'postgres'\""
+  - "psql -c \"create database spring;\" -U postgres // your database name"
 dist: trusty
 install:
   - "mvn -N io.takari:maven:wrapper"
